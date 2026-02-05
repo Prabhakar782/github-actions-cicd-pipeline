@@ -17,7 +17,7 @@ public class SpringBootCicdApplication {
 
 	@GetMapping("/getMessage")
 	public String getMessage() {
-		return "welcome...";
+		return "welcome.......";
 
 	}
 }
