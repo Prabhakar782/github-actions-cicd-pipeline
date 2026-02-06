@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  app:
+    image: sharvilvajja/spring-boot-cicd:latest
+    ports:
+      - "8181:8181"
+    deploy:
+      replicas: 3
