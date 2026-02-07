@@ -19,7 +19,7 @@ public class SpringBootCicdApplication {
 
 	@GetMapping("/getMessage")
 	public String getMessage() throws UnknownHostException {
-		return  "Response from pod: " + System.getenv("POD_NAME");
+		return  " Response from pod: " + System.getenv("POD_NAME");
 
 	}
 }
