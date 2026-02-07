@@ -1,6 +1,5 @@
 package com.example.cicd;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import org.springframework.boot.SpringApplication;
@@ -20,7 +19,7 @@ public class SpringBootCicdApplication {
 
 	@GetMapping("/getMessage")
 	public String getMessage() throws UnknownHostException {
-		return " Pod: " + InetAddress.getLocalHost().getHostName();
+		return  "Response from pod: " + System.getenv("POD_NAME");
 
 	}
 }

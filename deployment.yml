@@ -18,3 +18,8 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8181
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
