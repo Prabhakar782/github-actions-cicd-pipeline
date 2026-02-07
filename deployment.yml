@@ -15,5 +15,6 @@ spec:
       containers:
         - name: spring-app
           image: sharvilvajja/spring-boot-cicd:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8181
