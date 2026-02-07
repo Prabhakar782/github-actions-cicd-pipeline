@@ -7,5 +7,6 @@ spec:
   selector:
     app: spring-app
   ports:
-    - port: 80
-      targetPort: 8181
+    - port: 80        # Service port (what external clients hit)
+      targetPort: 8181 # Pod container port
+      nodePort: 31300  # NodePort to access externally
