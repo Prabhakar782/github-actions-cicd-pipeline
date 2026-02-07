@@ -20,7 +20,7 @@ public class SpringBootCicdApplication {
 
 	@GetMapping("/getMessage")
 	public String getMessage() throws UnknownHostException {
-		return "Pod: " + InetAddress.getLocalHost().getHostName();
+		return " Pod: " + InetAddress.getLocalHost().getHostName();
 
 	}
 }
