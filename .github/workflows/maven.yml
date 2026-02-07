@@ -38,30 +38,30 @@ jobs:
           username: ${{ secrets.MY_DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # 5️⃣ Install kubectl
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v4
-        with:
-          version: 'v1.29.0'
-
-      # 6️⃣ Configure Kubernetes access
-      - name: Configure kubeconfig
-        run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIGS }}" | base64 -d > $HOME/.kube/config
-
-      # 7️⃣ Update image version inside deployment.yml
-      - name: Update Kubernetes deployment image
-        run: |
-          sed -i "s|image: .*|image: sharvilvajja/spring-boot-cicd:v${{ github.run_number }}|" deployment.yml
-
-      # 8️⃣ Deploy to Kubernetes
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl apply -f deployment.yml
-          kubectl apply -f service.yml
-
-      # 9️⃣ (Optional) Verify rollout
-      - name: Verify rollout
-        run: |
-          kubectl rollout status deployment/spring-app
+#      # 5️⃣ Install kubectl
+#      - name: Set up kubectl
+#        uses: azure/setup-kubectl@v4
+#        with:
+#          version: 'v1.29.0'
+#
+#      # 6️⃣ Configure Kubernetes access
+#      - name: Configure kubeconfig
+#        run: |
+#          mkdir -p $HOME/.kube
+#          echo "${{ secrets.KUBECONFIGS }}" | base64 -d > $HOME/.kube/config
+#
+#      # 7️⃣ Update image version inside deployment.yml
+#      - name: Update Kubernetes deployment image
+#        run: |
+#          sed -i "s|image: .*|image: sharvilvajja/spring-boot-cicd:v${{ github.run_number }}|" deployment.yml
+#
+#      # 8️⃣ Deploy to Kubernetes
+#      - name: Deploy to Kubernetes
+#        run: |
+#          kubectl apply -f deployment.yml
+#          kubectl apply -f service.yml
+#
+#      # 9️⃣ (Optional) Verify rollout
+#      - name: Verify rollout
+#        run: |
+#          kubectl rollout status deployment/spring-app
