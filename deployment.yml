@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: spring-app
-          image: sharvilvajja/spring-boot-cicd:v23
-          imagePullPolicy: Always
+          image: sharvilvajja/spring-boot-cicd:latest  # use 'latest' tag
+          imagePullPolicy: Always                        # ensures the latest image is pulled
           ports:
             - containerPort: 8181
           env:
