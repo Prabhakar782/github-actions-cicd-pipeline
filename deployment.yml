@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: spring-app
-          image: sharvilvajja/spring-boot-cicd-pipeline:v30  # use 'latest' tag
+          image: sharvilvajja/spring-boot-cicd-pipeline:latest  # use 'latest' tag
           imagePullPolicy: Always                        # ensures the latest image is pulled
           ports:
             - containerPort: 8181
