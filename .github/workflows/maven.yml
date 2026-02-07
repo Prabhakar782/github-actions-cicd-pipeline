@@ -48,7 +48,7 @@ jobs:
       - name: Configure kubeconfig
         run: |
           mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG }}" | base64 -d > $HOME/.kube/config
+          echo "${{ secrets.KUBECONFIGS }}" | base64 -d > $HOME/.kube/config
 
       # 7️⃣ Update image version inside deployment.yml
       - name: Update Kubernetes deployment image
