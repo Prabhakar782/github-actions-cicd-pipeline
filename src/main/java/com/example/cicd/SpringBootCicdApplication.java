@@ -2,6 +2,7 @@ package com.example.cicd;
 
 import java.net.UnknownHostException;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +18,12 @@ public class SpringBootCicdApplication {
 		SpringApplication.run(SpringBootCicdApplication.class, args);
 	}
 
+	@Value("${POD_NAME:unknown}")
+    private String podName;
+	
 	@GetMapping("/getMessage")
 	public String getMessage() throws UnknownHostException {
-		return  "Response from pod..... " + System.getenv("POD_NAME");
+		return  "Response from pod..... " + podName;
 
 	}
 }
