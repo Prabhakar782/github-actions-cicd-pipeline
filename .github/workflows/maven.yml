@@ -34,6 +34,24 @@ jobs:
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.login=$SONAR_TOKEN
 
+  manual-review:
+    needs: ci
+    runs-on: ubuntu-latest
+    environment:
+      name: manual-approval   # 🔴 PAUSE happens here
+
+    steps:
+      - name: Waiting for self review
+        run: echo "Review Sonar results and approve to continue"
+
+  docker-build:
+    needs: manual-review
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
       - name: Docker Build & Push
         uses: mr-smithers-excellent/docker-build-push@v6
         with:
