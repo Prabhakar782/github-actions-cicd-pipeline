@@ -1,8 +1,5 @@
 package com.example.cicd;
 
-import java.net.UnknownHostException;
-
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +15,9 @@ public class SpringBootCicdApplication {
 		SpringApplication.run(SpringBootCicdApplication.class, args);
 	}
 
-	@Value("${HOSTNAME:unknown}")
-    private String podName;
-
-    @GetMapping("/getMessage")
-    public String getMessage() throws UnknownHostException {
-
-        // Problem 1: Exposes internal infrastructure details
-        // Pod name reveals deployment, replica, scaling info
-        return "Response from pod..... " + podName;
-    }
+	@GetMapping("/getMessage")
+	public String getMessage() {
+		int age = 21;
+		return age > 19 ? "eligible for vote" : "not eligible for vote";
+	}
 }
