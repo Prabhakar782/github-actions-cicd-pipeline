@@ -31,7 +31,7 @@
 
 		<java.version>21</java.version>
 		<!-- SonarCloud -->
-		<sonar.projectKey>github-actions-cicd-pipeline</sonar.projectKey>
+		<sonar.projectKey>Prabhakar782_github-actions-cicd-pipeline</sonar.projectKey>
 <sonar.organization>prabhakar782</sonar.organization>
 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
