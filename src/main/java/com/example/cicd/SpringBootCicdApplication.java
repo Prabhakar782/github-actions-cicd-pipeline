@@ -18,12 +18,14 @@ public class SpringBootCicdApplication {
 		SpringApplication.run(SpringBootCicdApplication.class, args);
 	}
 
-	@Value("${POD_NAME:unknown}")
+	@Value("${HOSTNAME:unknown}")
     private String podName;
-	
-	@GetMapping("/getMessage")
-	public String getMessage() throws UnknownHostException {
-		return  "Response from pod..... " + podName;
 
-	}
+    @GetMapping("/getMessage")
+    public String getMessage() throws UnknownHostException {
+
+        // Problem 1: Exposes internal infrastructure details
+        // Pod name reveals deployment, replica, scaling info
+        return "Response from pod..... " + podName;
+    }
 }
