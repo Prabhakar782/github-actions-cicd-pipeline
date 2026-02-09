@@ -1,5 +1,0 @@
-#services:
-#  app:
-#    image: sharvilvajja/spring-boot-cicd-pipeline:latest
-#    ports:
-#      - "8181"
