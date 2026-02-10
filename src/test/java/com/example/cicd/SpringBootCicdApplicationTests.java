@@ -15,7 +15,7 @@ class SpringBootCicdApplicationTests {
 	@Test
 	void getMessageTest() {
 		String response = springBootCicdApplication.getMessage();
-		assertEquals("congratulations to YOU! your age is eligible for vote", response);
+		assertEquals("Congratulations to You! your age is eligible for vote", response);
 	}
 
 }
