@@ -1,4 +1,4 @@
-name: Java CI + Sonar + Docker (Stable)
+name: Java CI + Sonar + Docker + Azure Deploy (Stable)
 
 on:
   push:
@@ -38,7 +38,7 @@ jobs:
     needs: ci
     runs-on: ubuntu-latest
     environment:
-      name: manual-approval   # 🔴 PAUSE happens here
+      name: manual-approval   # 🔴 Manual approval gate
 
     steps:
       - name: Waiting for self review
@@ -61,3 +61,15 @@ jobs:
           dockerfile: Dockerfile
           username: ${{ secrets.MY_DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+
+  deploy-to-azure:
+    needs: docker-build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to Azure Web App (Docker)
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          images: sharvilvajja/spring-boot-cicd-pipeline:v${{ github.run_number }}
