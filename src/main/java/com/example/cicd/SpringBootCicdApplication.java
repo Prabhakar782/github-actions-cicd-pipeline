@@ -18,6 +18,6 @@ public class SpringBootCicdApplication {
 	@GetMapping("/getMessage")
 	public String getMessage() {
 		int age = 21;
-		return age > 19 ? "Congratulations to You! your age is eligible for vote" : "you are not eligible for vote";
+		return age > 19 ? "Congratulations to You.! your age is eligible for vote" : "you are not eligible for vote";
 	}
 }
